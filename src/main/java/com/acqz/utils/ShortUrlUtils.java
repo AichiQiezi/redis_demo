@@ -7,7 +7,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  * @date 2023/4/9 16:01
  */
 
-public class ShortUtils {
+public class ShortUrlUtils {
     //26+26+10=62
     public static  final  String[] chars = new String[]{"a", "b", "c", "d", "e", "f", "g", "h",
             "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
@@ -43,6 +43,8 @@ public class ShortUtils {
 
             //把加密字符按照8位一组16进制与 0x3FFFFFFF 进行位与运算
             // 这里需要使用 long 型来转换，因为 Inteper .parseInt() 只能处理 31 位 , 首位为符号位 , 如果不用 long ，则会越界
+            long l = Long.parseLong(sTempSubString, 16);
+            System.out.println(l);
             long lHexLong = 0x3FFFFFFF & Long.parseLong(sTempSubString, 16);
             System.out.println("---------lHexLong: "+lHexLong);
 
